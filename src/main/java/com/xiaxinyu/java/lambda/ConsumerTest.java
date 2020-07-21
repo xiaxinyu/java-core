@@ -13,8 +13,8 @@ public class ConsumerTest {
     @Test
     public void test_consumer() {
         Consumer<NameInfo> consumer = t -> {
-            String infoString = t.name + t.age;
-            System.out.println("consumer process:" + infoString);
+            String infoString = String.format("[ name:%s age:%d ]", t.name, t.age);
+            System.out.println("consumer process: " + infoString);
         };
 
         NameInfo info = new NameInfo("abc", 123);
@@ -24,7 +24,7 @@ public class ConsumerTest {
     @Setter
     @Getter
     @AllArgsConstructor
-    class NameInfo{
+    class NameInfo {
         private String name;
         private Integer age;
     }
