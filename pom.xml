@@ -20,6 +20,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.1-jre</version>
+        </dependency>
+
         <!-- ========== Unit Test ========== -->
         <dependency>
             <groupId>junit</groupId>
