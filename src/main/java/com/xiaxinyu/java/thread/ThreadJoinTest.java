@@ -6,23 +6,25 @@ package com.xiaxinyu.java.thread;
  */
 public class ThreadJoinTest {
 
-    public static void main(String[] args) {
-        Thread t1 = new Thread(()->{
-                System.out.println("Hello, Happen before");
-        });
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("===Start===");
 
-        Thread t2 = new Thread(()->{
-            System.out.println("===Start===");
-            try {
-                t1.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        //Happen-before 5、All actions in a thread happen before any other thread successfully returns from a join() on that thread.
+        Thread t1 = new Thread(() -> {
+            int counter = 1;
+            while (counter++ < 10) {
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Hello, Happen before: [" + counter + "]");
             }
-            System.out.println("===End===");
         });
-
         t1.start();
-        t2.start();
+        t1.join();
+
+        System.out.println("===End===");
     }
 }
 
