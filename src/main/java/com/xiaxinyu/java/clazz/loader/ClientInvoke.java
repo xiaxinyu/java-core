@@ -7,7 +7,7 @@ public class ClientInvoke {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// MyClassLoader的父类加载器为系统默认的加载器AppClassLoader
-		com.xiaxinyu.java.classloader.CustomClassLoader myCLoader = new com.xiaxinyu.java.classloader.CustomClassLoader("CustomClassLoader");
+		CustomClassLoader myCLoader = new CustomClassLoader("CustomClassLoader");
 		// 指定MyClassLoader的父类加载器为ExtClassLoader
 		// MyClassLoader myCLoader = new
 		// MyClassLoader(ClassLoader.getSystemClassLoader().getParent(),"MyClassLoader");

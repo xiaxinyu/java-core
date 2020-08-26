@@ -12,6 +12,8 @@ import org.openjdk.jol.info.ClassLayout;
  */
 @Slf4j
 public class ClassLayoutTest {
+    //开启(-XX:+UseCompressedOops) 可以压缩指针。
+    //关闭(-XX:-UseCompressedOops) 可以关闭压缩指针。
 
     public static void print(Object object) {
         log.info("HasCode Hex: {}", Integer.toHexString(object.hashCode()));
