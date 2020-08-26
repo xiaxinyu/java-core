@@ -1,4 +1,4 @@
-package com.xiaxinyu.java.classloader;
+package com.xiaxinyu.java.clazz.loader;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

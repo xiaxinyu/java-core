@@ -1,4 +1,4 @@
-package com.xiaxinyu.java.classloader;
+package com.xiaxinyu.java.clazz.loader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
