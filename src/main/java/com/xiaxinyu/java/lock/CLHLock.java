@@ -35,22 +35,23 @@ public class CLHLock implements Lock {
      * +------+
      * | head | <---- tail
      * +------+
-     * <p>
+     *
      * 2.lock-thread加入等待队列: tail指向新的Node，同时Prev指向tail之前指向的节点
      * +----------+
      * | Thread-A |
      * | := Node  | <---- tail
      * | := Prev  | -----> +------+
      * +----------+        | head |
-     * +------+
-     * <p>
-     * +----------+            +----------+
-     * | Thread-B |            | Thread-A |
+     *                     +------+
+     *
+     *             +----------+            +----------+
+     *             | Thread-B |            | Thread-A |
      * tail ---->  | := Node  |     -->    | := Node  |
-     * | := Prev  | ----|      | := Prev  | ----->  +------+
-     * +----------+            +----------+         | head |
-     * +------+
+     *             | := Prev  | ----|      | := Prev  | ----->  +------+
+     *             +----------+            +----------+         | head |
+     *                                                          +------+
      * 3.寻找当前node的prev-node然后开始自旋
+     *
      */
     @Override
     public void lock() {
