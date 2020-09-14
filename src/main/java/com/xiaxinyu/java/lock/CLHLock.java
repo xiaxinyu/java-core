@@ -59,8 +59,8 @@ public class CLHLock implements Lock {
         node.locked = true;
         System.out.println("********> New Node -> " + node);
         Node pred = this.tail.getAndSet(node);
-        System.out.println(String.format("++++++++> Thread[%s] New Node=%s, Pred Node=%s",
-                Thread.currentThread().getName(), node.getName(), pred.getName()));
+        System.out.println(String.format("++++++++> Thread[%s] New Node=%s, Pred Node=%s, Pred Node status=%b",
+                Thread.currentThread().getName(), node.getName(), pred.getName(), pred.locked));
 
         this.prev.set(pred);
         // 自旋
