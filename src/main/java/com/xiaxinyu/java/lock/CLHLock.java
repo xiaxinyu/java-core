@@ -35,23 +35,22 @@ public class CLHLock implements Lock {
      * +------+
      * | head | <---- tail
      * +------+
-     *
+     * <p>
      * 2.lock-thread加入等待队列: tail指向新的Node，同时Prev指向tail之前指向的节点
      * +----------+
      * | Thread-A |
      * | := Node  | <---- tail
      * | := Prev  | -----> +------+
      * +----------+        | head |
-     *                     +------+
-     *
-     *             +----------+            +----------+
-     *             | Thread-B |            | Thread-A |
+     * +------+
+     * <p>
+     * +----------+            +----------+
+     * | Thread-B |            | Thread-A |
      * tail ---->  | := Node  |     -->    | := Node  |
-     *             | := Prev  | ----|      | := Prev  | ----->  +------+
-     *             +----------+            +----------+         | head |
-     *                                                          +------+
+     * | := Prev  | ----|      | := Prev  | ----->  +------+
+     * +----------+            +----------+         | head |
+     * +------+
      * 3.寻找当前node的prev-node然后开始自旋
-     *
      */
     @Override
     public void lock() {
@@ -67,16 +66,20 @@ public class CLHLock implements Lock {
         while (pred.locked) {
             //System.out.print("########> Locking -> " + pred.getName() + " ");
         }
+        System.out.println(String.format("########> Thread[%s] New Node=%s, Pred Node=%s, Pred Node status=%b",
+                Thread.currentThread().getName(), node.getName(), pred.getName(), pred.locked));
+
     }
 
     @Override
     public void unlock() {
         final Node node = this.node.get();
         node.locked = false;
-        System.out.println(String.format("~~~~~~~~> Thread[%s] release lock, Node=%s",
-                Thread.currentThread().getName(), node.getName()));
 
-        this.node.set(this.prev.get());
+        Node pred = this.prev.get();
+        System.out.println(String.format("~~~~~~~~> Thread[%s] release lock, Node=%s, Pred Node=%s, Pred Node status=%b",
+                Thread.currentThread().getName(), node.getName(), pred.getName(), pred.locked));
+        this.node.set(pred);
     }
 
     @Override
