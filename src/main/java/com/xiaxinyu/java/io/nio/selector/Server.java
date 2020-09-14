@@ -1,4 +1,4 @@
-package org.learning.nio.selector;
+package com.xiaxinyu.java.io.nio.selector;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -41,7 +41,7 @@ public class Server {
 				SelectionKey sk = keyIterator.next();
 
 				/*
-				 * 当获取一个 SelectionKey 后, 就要将它删除, 表示我们已经对这个 IO 事件进行了处理. 
+				 * 当获取一个 SelectionKey 后, 就要将它删除, 表示我们已经对这个 IO 事件进行了处理.
 				 * 注意, 在每次迭代时, 我们都调用
 				 * "keyIterator.remove()" 将这个 key 从迭代器中删除, 因为 select() 方法仅仅是简单地将就绪的 IO 操作放到
 				 * selectedKeys 集合中, 因此如果我们从 selectedKeys 获取到一个 key, 但是没有将它删除, 那么下一次 select 时,

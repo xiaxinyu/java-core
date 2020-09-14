@@ -2,7 +2,6 @@ package com.xiaxinyu.java.lock;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.locks.Lock;
 
 /**
  * @author summer
@@ -39,9 +38,6 @@ public class CLHLockTest {
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 testLock(clh);
-                // 这段代码是非lock比较使用
-//                    for (int i = 0; i < 10000000; i++)
-//                        count++;
                 try {
                     cb.await();
                 } catch (InterruptedException | BrokenBarrierException e) {

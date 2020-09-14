@@ -1,4 +1,4 @@
-package org.learning.nio.channel.buffer;
+package com.xiaxinyu.java.io.nio.buffer;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
