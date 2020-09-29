@@ -15,7 +15,7 @@ public class Server {
 		PrintWriter printWriter = null;
 		try {
 			server = new ServerSocket(9000);
-			//server.accept() blocking method
+			System.out.println("I am running, port=9000");
 			socket = server.accept();
 			bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String info = null;
